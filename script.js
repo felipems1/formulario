@@ -1,77 +1,102 @@
-let B7validator = {
-    handleSubmit:(event)=>{
-        event.preventDefault();
-        let send = true;
+const form = document.getElementById("form");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const passwordConfirmation = document.getElementById("password-confirmation");
 
-        let inputs = form.querySelectorAll('input');
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-        B7validator.clearErrors();
+  checkForm();
+});
 
-        for(let i=0;i<inputs.length;i++) {
-            let input = inputs[i];
-            let check = B7validator.checkInput(input);
-            if(check !== true) {
-                send = false;
-                B7validator.showError(input, check);
-            }
-        }
+email.addEventListener("blur", () => {
+  checkInputEmail();
+});
 
-        if(send) {
-            form.submit();
-        }
-    },
-    checkInput:(input) => {
-        let rules = input.getAttribute('data-rules');
-        if(rules !== null) {
-            rules = rules.split('|');
-            for(let k in rules) {
-                let rDetails = rules[k].split('=');
-                switch(rDetails[0]) {
-                    case 'required':
-                        if(input.value == '') {
-                            return 'Campo não pode ser vazio.';
-                        }
-                    break;
-                    case 'min':
-                        if(input.value.length < rDetails[1]) {
-                            return 'Campo tem que ter pelo menos '+rDetails[1]+' caracteres'; 
-                        }
-                    break;
-                    case 'email':
-                        if(input.value != '') {
-                            let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                            if(!regex.test(input.value.toLowerCase())) {
-                                return 'E-mail digitado não é valido!'
-                            }
-                        }
-                    break;
-                }
-            }
-        }
+username.addEventListener("blur", () => {
+  checkInputUserName();
+});
 
-        return true;
-    },
-    showError:(input, error)=>{
-        input.style.borderColor = '#FF0000';
+password.addEventListener("blur", () => {
+  checkPassword();
+});
 
-        let errorElement = document.createElement('div');
-        errorElement.classList.add('error');
-        errorElement.innerHTML = error;
-        
-        input.parentElement.insertBefore(errorElement, input.errorElementSibling);
-    },
-    clearErrors:() => {
-        let inputs = form.querySelectorAll('input');
-        for(let i=0;i<inputs.length;i++) {
-            inputs[i].style = '';
-        }
+passwordConfirmation.addEventListener("blur", () => {
+  checkPasswordConfirmation();
+});
 
-        let errorElements = document.querySelectorAll('.error');
-        for(let i=0;i<errorElements.length;i++) {
-            errorElements[i].remove();
-        }
-    }
-};
+function checkInputUserName() {
+  const userNameValue = username.value;
 
-let form = document.querySelector('.b7validator');
-form.addEventListener('submit', B7validator.handleSubmit);
+  if (userNameValue === "") {
+    errorInput(username, "O nome é obrigatório.");
+  } else {
+    const formItem = username.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkInputEmail() {
+  const emailValue = email.value;
+
+  if (emailValue === "") {
+    errorInput(email, "O email é obrigatório.");
+  } else {
+    const formItem = email.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkPassword() {
+  const passwordValue = password.value;
+
+  if (passwordValue === "") {
+    errorInput(password, "Senha é obrigatória.");
+  } else if (passwordValue.length < 8) {
+    errorInput(password, "A senha precisa ter no mínimo 8 caracteres.");
+  } else {
+    const formItem = password.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkPasswordConfirmation() {
+  const passwordValue = password.value;
+  const confirmationPasswordValue = passwordConfirmation.value;
+
+  if (confirmationPasswordValue === "") {
+    errorInput(passwordConfirmation, "A confirmação de senha é obrigatória.");
+  } else if (confirmationPasswordValue !== passwordValue) {
+    errorInput(passwordConfirmation, "As senhas não são iguais.");
+  } else {
+    const formItem = passwordConfirmation.parentElement;
+    formItem.className = "form-content";
+  }
+}
+
+function checkForm() {
+  checkInputUserName();
+  checkInputEmail();
+  checkPassword();
+  checkPasswordConfirmation();
+
+  const formItems = form.querySelectorAll(".form-content");
+
+  const isValid = [...formItems].every((item) => {
+    return item.className === "form-content";
+  });
+
+  if (isValid) {
+    alert("CADASTRADO COM SUCESSO!");
+  }
+}
+
+function errorInput(input, message) {
+  const formItem = input.parentElement;
+  const textMessage = formItem.querySelector("a");
+
+  textMessage.innerText = message;
+
+  formItem.className = "form-content error";
+}

@@ -1,55 +1,83 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
+
 body {
-    margin: 0;
-}
-.screen {
-    display: flex;
-    height: 100vh;
-}
-.leftside {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.leftside img {
-    max-width: 500px;
-    height: auto;
-}
-.rightside {
-    width: 400px;
-    background-color: #DDD;
-    padding: 50px;
-}
-.rightside label {
-    display: block;
-    margin-bottom: 20px;
-}
-.rightside input {
-    width: 100%;
-    border: 1px solid #999;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 14px;
-    outline: 0;
+  background-color: #121212;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.error {
-    font-size: 11px;
-    background-color: #FF0000;
-    color: #FFF;
-    padding: 4px;
-    border-radius: 5px;
+.container {
+  background-color: #fafafa;
+  border-radius: 14px;
+  margin: 14px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
-@media (max-width:450px) {
-    .leftside {
-        display: none;
-    }
-    .rightside {
-        height: 100vh;
-        width: 100vh;
-    }
+.header {
+  background: linear-gradient(120deg, #3acbf0 0%, #8bb0ff 100%);
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.form {
+  padding: 18px;
+}
+
+.form-content {
+  margin-bottom: 8px;
+  padding-bottom: 18px;
+  position: relative;
+}
+
+.form-content label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.form-content input {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  padding: 8px;
+  border: 2px solid #dfdfdf;
+}
+
+.form-content a {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  visibility: hidden;
+}
+
+.form button {
+  background-color: #00c3ff;
+  color: #fff;
+  width: 100%;
+  border-radius: 14px;
+  padding: 10px;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+.form-content.error input {
+  border-color: #ff3b25;
+}
+
+.form-content.error a {
+  color: #ff3b25;
+  visibility: visible;
 }
