@@ -1,29 +1,25 @@
-<h1 align="center"> Formulário </h1>
+<h1 align="center">Formulário</h1>
 
-<p align="center">
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>
-</p>
+<h3 align="center">Um formulário de cadastro fictício.</h3> <br/>
 
-## 🔖 Layout
-
-<p align="center">
-  <video src="https://user-images.githubusercontent.com/111329429/227782700-792b4d0b-0493-42a6-82b2-69b931acf627.mp4">
-</p>
-
-## 🚀 Tecnologias
-
-Esse projeto foi desenvolvido com as seguintes tecnologias:
-
-- JavaScript
-- HTML e CSS
-- Git e Github
-
-## 💻 Projeto
-
-Formulário de cadastro.
+<div align="center">
+  <img src="./preview.png" alt="demonstração do projeto" >
+</div>
 
 ---
 
-[Link do meu perfil no Linkedin.](https://www.linkedin.com/in/felipe-moises-4a1b58248/)
+<h2>Objetivo:</h2>
+
+- Trabalhar com validação de formulário.
+
+---
+
+<h2>Tecnologias:</h2>
+
+- JavaScript
+- HTML
+- CSS
+
+---
+
+<p align="center">Projeto feito com ❤️ por <a href="https://www.linkedin.com/in/felipems1/">Felipe Moises</a></p>
