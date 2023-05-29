@@ -8,12 +8,6 @@
 
 ---
 
-<h2>Objetivo:</h2>
-
-- Trabalhar com validação de formulário.
-
----
-
 <h2>Tecnologias:</h2>
 
 - JavaScript
